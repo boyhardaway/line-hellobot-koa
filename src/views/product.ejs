@@ -1,6 +1,6 @@
 <h2>Calling the LIFF Product</h2>
 <%console.log(products[0])%>
-    <select>
+    <select id="mySelect" onchange="liff()">
         <%products.forEach(product => {%>
             <option value=<%- product.id %>>
                 <%- product.name %>
@@ -13,12 +13,12 @@
             // Initializes a LIFF app
             liff.init(function (data) { })
         })
-        function liff(product) {
+        function liff() {
             liff.getProfile().then((profile) => {
                 liff.sendMessages([
                     {
                         type: 'text',
-                        text: 'productName:' + product
+                        text: 'productName:' + document.getElementById("mySelect").value
                     },
                     {
                         type: 'text',

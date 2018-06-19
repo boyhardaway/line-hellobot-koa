@@ -8,15 +8,16 @@
             <%})%>
     </select>
     <p id="step"></p>
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script>
         // $(window).on('load', function () {
         //     console.log('liff.init')
         //     // Initializes a LIFF app 
         // })
-
+        
         function liff() {
             console.log('liff')
-            console.log(document.getElementById('selProduct').value)
+            console.log(document.getElementById("selProduct").value)
             document.getElementById("step").innerHTML = "func liff"
             liff.init(
                 data => {

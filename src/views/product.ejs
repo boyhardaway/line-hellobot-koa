@@ -11,12 +11,14 @@
     <script>
         $(window).on('load', function () {
             // Initializes a LIFF app
-            liff.init(function (data) { })
+            liff.init(function (data) {})
         })
+
         function liff() {
+            console.log('liff')
+            console.log(document.getElementById("mySelect").value)
             liff.getProfile().then((profile) => {
-                liff.sendMessages([
-                    {
+                liff.sendMessages([{
                         type: 'text',
                         text: 'productName:' + document.getElementById("mySelect").value
                     },
@@ -33,5 +35,4 @@
                 window.alert("Error getting profile: " + error.message)
             })
         }
-
     </script>

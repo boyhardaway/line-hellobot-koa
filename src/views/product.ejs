@@ -7,7 +7,7 @@
             </option>
             <%})%>
     </select>
-
+    <p id="step"></p>
     <script>
         $(window).on('load', function () {
             console.log('liff.init')
@@ -17,10 +17,11 @@
         function liff() {
             console.log('liff')
             console.log(document.getElementById('selProduct').value)
-
+            document.getElementById("step").innerHTML = "func liff"
             liff.init(
                 data => {
                     // Now you can call LIFF API
+                    document.getElementById("step").innerHTML = "liff.init"
                     const userId = data.context.userId
                 },
                 err => {
@@ -28,16 +29,18 @@
                 }
             )
             liff.getProfile().then((profile) => {
+                document.getElementById("step").innerHTML = "liff.getProfile"
                 liff.sendMessages([{
                         type: 'text',
-                        text: 'productName:' + document.getElementById('selProduct').value
+                        text: 'productName : ' + 'Product Test'
                     },
                     {
                         type: 'text',
-                        text: 'From:' + profile.displayName
+                        text: 'From : ' + profile.displayName
                     }
                 ]).then(() => {
                     console.log('message sent');
+                    document.getElementById("step").innerHTML = "liff.closeWindow"
                     liff.closeWindow()
                 }).catch((err) => {
                     console.log('error', err);

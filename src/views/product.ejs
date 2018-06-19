@@ -9,10 +9,10 @@
     </select>
     <p id="step"></p>
     <script>
-        $(window).on('load', function () {
-            console.log('liff.init')
-            // Initializes a LIFF app 
-        })
+        // $(window).on('load', function () {
+        //     console.log('liff.init')
+        //     // Initializes a LIFF app 
+        // })
 
         function liff() {
             console.log('liff')
@@ -23,30 +23,31 @@
                     // Now you can call LIFF API
                     document.getElementById("step").innerHTML = "liff.init"
                     const userId = data.context.userId
+
+                    liff.getProfile().then((profile) => {
+                        document.getElementById("step").innerHTML = "liff.getProfile"
+                        liff.sendMessages([{
+                                type: 'text',
+                                text: 'productName : ' + 'Product Test'
+                            },
+                            {
+                                type: 'text',
+                                text: 'From : ' + profile.displayName
+                            }
+                        ]).then(() => {
+                            console.log('message sent');
+                            document.getElementById("step").innerHTML = "liff.closeWindow"
+                            liff.closeWindow()
+                        }).catch((err) => {
+                            console.log('error', err);
+                        })
+                    }).catch((err) => {
+                        console.log('error', err);
+                    });
                 },
                 err => {
                     // LIFF initialization failed
                 }
             )
-            liff.getProfile().then((profile) => {
-                document.getElementById("step").innerHTML = "liff.getProfile"
-                liff.sendMessages([{
-                        type: 'text',
-                        text: 'productName : ' + 'Product Test'
-                    },
-                    {
-                        type: 'text',
-                        text: 'From : ' + profile.displayName
-                    }
-                ]).then(() => {
-                    console.log('message sent');
-                    document.getElementById("step").innerHTML = "liff.closeWindow"
-                    liff.closeWindow()
-                }).catch((err) => {
-                    console.log('error', err);
-                })
-            }).catch((err) => {
-                console.log('error', err);
-            });
         }
     </script>

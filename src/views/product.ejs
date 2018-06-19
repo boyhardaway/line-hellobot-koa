@@ -14,76 +14,76 @@
         liff.init(
             data => {
                 // Now you can call LIFF API
-                const userId = data.context.userId;
+                const userId = data.context.userId
                 liff.getProfile().then(profile => {
                         const name = profile.displayName
-                        $('#step').text('Hello ' + name);
+                        $('#step').text('Hello ' + name)
                     })
                     .catch((err) => {
-                        console.log('error', err);
-                    });
+                        console.log('error', err)
+                    })
                 /*liff.openWindow({
                     url:'https://google.com',
                     external:true
-                });*/
+                })*/
             },
             err => {
                 // LIFF initialization failed
             }
-        );
+        )
 
-        $(function () { 
+        $(function () {
             $('#selProduct').on('change', function () {
-                    liff.sendMessages([{
-                            type: 'text',
-                            text: 'productName : ' + $('#selProduct').val()
-                        },
-                        {
-                            type: 'text',
-                            text: 'From : ' + $('#step').text()
-                        }
-                    ]).then(() => {
-                        liff.closeWindow()
-                    }).catch((err) => {
-                        console.log('error', err);
-                    })
+                liff.sendMessages([{
+                        type: 'text',
+                        text: 'productName : ' + $('#selProduct').val()
+                    },
+                    {
+                        type: 'text',
+                        text: 'From : ' + $('#step').text()
+                    }
+                ]).then(() => {
+                    liff.closeWindow()
+                }).catch((err) => {
+                    console.log('error', err)
                 })
-        }
-                
+            })
+        })
 
 
-                // console.log('liff')
-                //     console.log(document.getElementById("selProduct").value)
-                //     document.getElementById("step").innerHTML = "func liff"
-                //     liff.init(
-                //         data => {
-                //             // Now you can call LIFF API
-                //             document.getElementById("step").innerHTML = "liff.init"
-                //             const userId = data.context.userId
 
-                //             liff.getProfile().then((profile) => {
-                //                 document.getElementById("step").innerHTML = "liff.getProfile"
-                //                 liff.sendMessages([{
-                //                         type: 'text',
-                //                         text: 'productName : ' + 'Product Test'
-                //                     },
-                //                     {
-                //                         type: 'text',
-                //                         text: 'From : ' + profile.displayName
-                //                     }
-                //                 ]).then(() => {
-                //                     console.log('message sent');
-                //                     document.getElementById("step").innerHTML = "liff.closeWindow"
-                //                     liff.closeWindow()
-                //                 }).catch((err) => {
-                //                     console.log('error', err);
-                //                 })
-                //             }).catch((err) => {
-                //                 console.log('error', err);
-                //             });
-                //         },
-                //         err => {
-                //             // LIFF initialization failed
-                //         }
-                //     )
+        // console.log('liff')
+        //     console.log(document.getElementById("selProduct").value)
+        //     document.getElementById("step").innerHTML = "func liff"
+        //     liff.init(
+        //         data => {
+        //             // Now you can call LIFF API
+        //             document.getElementById("step").innerHTML = "liff.init"
+        //             const userId = data.context.userId
+
+        //             liff.getProfile().then((profile) => {
+        //                 document.getElementById("step").innerHTML = "liff.getProfile"
+        //                 liff.sendMessages([{
+        //                         type: 'text',
+        //                         text: 'productName : ' + 'Product Test'
+        //                     },
+        //                     {
+        //                         type: 'text',
+        //                         text: 'From : ' + profile.displayName
+        //                     }
+        //                 ]).then(() => {
+        //                     console.log('message sent')
+        //                     document.getElementById("step").innerHTML = "liff.closeWindow"
+        //                     liff.closeWindow()
+        //                 }).catch((err) => {
+        //                     console.log('error', err)
+        //                 })
+        //             }).catch((err) => {
+        //                 console.log('error', err)
+        //             })
+        //         },
+        //         err => {
+        //             // LIFF initialization failed
+        //         }
+        //     )
     </script>

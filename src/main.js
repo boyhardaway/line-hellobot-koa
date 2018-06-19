@@ -12,11 +12,7 @@ render(app, {
   viewExt: 'ejs',
   cache: false
 })
- 
-  
 
-
- 
 app 
 .use(koaBody({ multipart: true}))
 .use(require('./route'))

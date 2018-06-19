@@ -1,8 +1,10 @@
 const Router = require('koa-router')
+
+const productapi = require('./productapi') 
+
 const router = new Router()
 
-router.use(require('./api'))
-router.use(require('./chatbot'))
-router.use(require('./liff'))
+router.get('/productapi', productapi.getHandler) 
+
 
 module.exports = router.routes()

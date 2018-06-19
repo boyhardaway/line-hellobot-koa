@@ -1,0 +1,37 @@
+<h2>Calling the LIFF Product</h2>
+<%console.log(products[0])%>
+    <select>
+        <%products.forEach(product => {%>
+            <option value=<%- product.id %>>
+                <%- product.name %>
+            </option>
+            <%})%>
+    </select>
+
+    <script>
+        $(window).on('load', function () {
+            // Initializes a LIFF app
+            liff.init(function (data) { })
+        })
+        function liff(product) {
+            liff.getProfile().then((profile) => {
+                liff.sendMessages([
+                    {
+                        type: 'text',
+                        text: 'productName:' + product
+                    },
+                    {
+                        type: 'text',
+                        text: 'From:' + profile.displayName
+                    }
+                ]).then(function () {
+                    liff.closeWindow()
+                }).catch(function (error) {
+                    window.alert('Error sending message: ' + error.message)
+                })
+            }).catch(function (error) {
+                window.alert("Error getting profile: " + error.message)
+            })
+        }
+
+    </script>

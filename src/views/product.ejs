@@ -1,4 +1,6 @@
 <h2>Calling the LIFF Product</h2>
+<p id="step"></p>
+
 <%console.log(products[0])%>
     <select id="selProduct" onchange="liff()">
         <%products.forEach(product => {%>
@@ -7,7 +9,7 @@
             </option>
             <%})%>
     </select>
-    <p id="step"></p>
+
     <script>
         liff.init(
             data => {
@@ -15,20 +17,7 @@
                 const userId = data.context.userId;
                 liff.getProfile().then(profile => {
                         const name = profile.displayName
-                        $('#step').text('สวัสดี ' + name);
-                        liff.sendMessages([{
-                                type: 'text',
-                                text: 'productName : ' + $('#selProduct').val()
-                            },
-                            {
-                                type: 'text',
-                                text: 'From : ' + name
-                            }
-                        ]).then(() => { 
-                            liff.closeWindow()
-                        }).catch((err) => {
-                            console.log('error', err);
-                        })
+                        $('#step').text('Hello ' + name);
                     })
                     .catch((err) => {
                         console.log('error', err);
@@ -43,39 +32,58 @@
             }
         );
 
+        $(function () { 
+            $('#selProduct').on('change', function () {
+                    liff.sendMessages([{
+                            type: 'text',
+                            text: 'productName : ' + $('#selProduct').val()
+                        },
+                        {
+                            type: 'text',
+                            text: 'From : ' + $('#step').text()
+                        }
+                    ]).then(() => {
+                        liff.closeWindow()
+                    }).catch((err) => {
+                        console.log('error', err);
+                    })
+                })
+        }
+                
 
-        // console.log('liff')
-        //     console.log(document.getElementById("selProduct").value)
-        //     document.getElementById("step").innerHTML = "func liff"
-        //     liff.init(
-        //         data => {
-        //             // Now you can call LIFF API
-        //             document.getElementById("step").innerHTML = "liff.init"
-        //             const userId = data.context.userId
 
-        //             liff.getProfile().then((profile) => {
-        //                 document.getElementById("step").innerHTML = "liff.getProfile"
-        //                 liff.sendMessages([{
-        //                         type: 'text',
-        //                         text: 'productName : ' + 'Product Test'
-        //                     },
-        //                     {
-        //                         type: 'text',
-        //                         text: 'From : ' + profile.displayName
-        //                     }
-        //                 ]).then(() => {
-        //                     console.log('message sent');
-        //                     document.getElementById("step").innerHTML = "liff.closeWindow"
-        //                     liff.closeWindow()
-        //                 }).catch((err) => {
-        //                     console.log('error', err);
-        //                 })
-        //             }).catch((err) => {
-        //                 console.log('error', err);
-        //             });
-        //         },
-        //         err => {
-        //             // LIFF initialization failed
-        //         }
-        //     )
+                // console.log('liff')
+                //     console.log(document.getElementById("selProduct").value)
+                //     document.getElementById("step").innerHTML = "func liff"
+                //     liff.init(
+                //         data => {
+                //             // Now you can call LIFF API
+                //             document.getElementById("step").innerHTML = "liff.init"
+                //             const userId = data.context.userId
+
+                //             liff.getProfile().then((profile) => {
+                //                 document.getElementById("step").innerHTML = "liff.getProfile"
+                //                 liff.sendMessages([{
+                //                         type: 'text',
+                //                         text: 'productName : ' + 'Product Test'
+                //                     },
+                //                     {
+                //                         type: 'text',
+                //                         text: 'From : ' + profile.displayName
+                //                     }
+                //                 ]).then(() => {
+                //                     console.log('message sent');
+                //                     document.getElementById("step").innerHTML = "liff.closeWindow"
+                //                     liff.closeWindow()
+                //                 }).catch((err) => {
+                //                     console.log('error', err);
+                //                 })
+                //             }).catch((err) => {
+                //                 console.log('error', err);
+                //             });
+                //         },
+                //         err => {
+                //             // LIFF initialization failed
+                //         }
+                //     )
     </script>

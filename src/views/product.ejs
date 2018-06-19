@@ -1,6 +1,6 @@
 <h2>Calling the LIFF Product</h2>
 <%console.log(products[0])%>
-    <select id="mySelect" onchange="liff()">
+    <select id="selProduct" onchange="liff()">
         <%products.forEach(product => {%>
             <option value=<%- product.id %>>
                 <%- product.name %>
@@ -10,29 +10,40 @@
 
     <script>
         $(window).on('load', function () {
-            // Initializes a LIFF app
-            liff.init(function (data) {})
+            console.log('liff.init')
+            // Initializes a LIFF app 
         })
 
         function liff() {
             console.log('liff')
-            console.log(document.getElementById("mySelect").value)
+            console.log(document.getElementById('selProduct').value)
+
+            liff.init(
+                data => {
+                    // Now you can call LIFF API
+                    const userId = data.context.userId
+                },
+                err => {
+                    // LIFF initialization failed
+                }
+            )
             liff.getProfile().then((profile) => {
                 liff.sendMessages([{
                         type: 'text',
-                        text: 'productName:' + document.getElementById("mySelect").value
+                        text: 'productName:' + document.getElementById('selProduct').value
                     },
                     {
                         type: 'text',
                         text: 'From:' + profile.displayName
                     }
-                ]).then(function () {
+                ]).then(() => {
+                    console.log('message sent');
                     liff.closeWindow()
-                }).catch(function (error) {
-                    window.alert('Error sending message: ' + error.message)
+                }).catch((err) => {
+                    console.log('error', err);
                 })
-            }).catch(function (error) {
-                window.alert("Error getting profile: " + error.message)
-            })
+            }).catch((err) => {
+                console.log('error', err);
+            });
         }
     </script>

@@ -4,7 +4,7 @@
 <%console.log(products[0])%>
     <select id="selProduct" onchange="liff()">
         <%products.forEach(product => {%>
-            <option value=<%- product.id %>>
+            <option value=<%- product.code %>>
                 <%- product.name %>
             </option>
             <%})%>

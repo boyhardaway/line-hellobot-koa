@@ -16,6 +16,19 @@
                 liff.getProfile().then(profile => {
                         const name = profile.displayName
                         $('#step').text('สวัสดี ' + name);
+                        liff.sendMessages([{
+                                type: 'text',
+                                text: 'productName : ' + $('#selProduct').val()
+                            },
+                            {
+                                type: 'text',
+                                text: 'From : ' + name
+                            }
+                        ]).then(() => { 
+                            liff.closeWindow()
+                        }).catch((err) => {
+                            console.log('error', err);
+                        })
                     })
                     .catch((err) => {
                         console.log('error', err);

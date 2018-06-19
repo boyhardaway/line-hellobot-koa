@@ -8,30 +8,27 @@
             <%})%>
     </select>
     <p id="step"></p>
-    <script> 
-
-        function liff() {
-            liff.init(
-                data => {
-                    // Now you can call LIFF API
-                    const userId = data.context.userId;
-                    liff.getProfile().then(profile => {
-                            const name = profile.displayName
-                            $('#step').text('สวัสดี ' + name);
-                        })
-                        .catch((err) => {
-                            console.log('error', err);
-                        });
-                    /*liff.openWindow({
-                        url:'https://google.com',
-                        external:true
-                    });*/
-                },
-                err => {
-                    // LIFF initialization failed
-                }
-            );
-        }
+    <script>
+        liff.init(
+            data => {
+                // Now you can call LIFF API
+                const userId = data.context.userId;
+                liff.getProfile().then(profile => {
+                        const name = profile.displayName
+                        $('#step').text('สวัสดี ' + name);
+                    })
+                    .catch((err) => {
+                        console.log('error', err);
+                    });
+                /*liff.openWindow({
+                    url:'https://google.com',
+                    external:true
+                });*/
+            },
+            err => {
+                // LIFF initialization failed
+            }
+        );
 
 
         // console.log('liff')

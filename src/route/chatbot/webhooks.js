@@ -66,8 +66,9 @@ async function replyLiffId(replyToken, liffId) {
     replyToken: replyToken,
     messages: [
       {
-        type: "text",
-        text: "line://app/" + liffId
+        type: "uri",
+        label:"View details",
+        uri: "line://app/" + liffId 
       }
     ]
   })

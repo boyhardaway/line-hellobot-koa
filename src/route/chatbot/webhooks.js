@@ -68,7 +68,7 @@ async function replyLiffId(replyToken, liffId) {
       {
         type: "uri",
         label:"View details",
-        uri: "line://app/" + liffId 
+        uri: "https://line.me/R/app/" + liffId   
       }
     ]
   })

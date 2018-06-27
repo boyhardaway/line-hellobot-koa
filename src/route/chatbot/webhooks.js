@@ -7,12 +7,12 @@ const msg = require('./message')
 const postHandler = async ctx => {
   console.log("==============ctx.request.body===============")
   console.log(ctx.request.body.events[0].message)
-
+  const replyToken = ctx.request.body.events[0].replyToken
   let msg = ctx.request.body.events[0].message
   if (msg.text.match("^add=")) {    
     let urlMsg = msg.text.split("=", 2) 
     let liffId = await liff(urlMsg[1]) 
-    let replyToken = ctx.request.body.events[0].replyToken
+    
     replyLiffId(replyToken, liffId)
   }else if (msg.text.match("^del=")) {
     let liffId = msg.text.split("=", 2) 

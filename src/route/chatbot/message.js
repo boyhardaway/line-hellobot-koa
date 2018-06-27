@@ -8,9 +8,9 @@ const replyMessage = (replyToken) => {
   const message = {
     type: 'uri',
     label:"View details",
-    uri: 'https://line.me/R/app/1586994800-WboBOnRK'
+    uri: 'https://www.google.co.th'
   }
-  
+  //https://line.me/R/app/1586994800-WboBOnRK
   client.replyMessage(replyToken, message)
     .then(() => {
       console.log('.then') 

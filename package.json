@@ -8,6 +8,7 @@
     "dev": "nodemon -e ejs,js index.js"
   },
   "dependencies": {
+    "@line/bot-sdk": "^6.1.0",
     "koa": "^2.5.1",
     "koa-body": "^4.0.3",
     "koa-ejs": "^4.1.1",

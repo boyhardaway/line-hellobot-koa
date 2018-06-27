@@ -1,5 +1,5 @@
 const request = require("request-promise")
-
+const msg = require('./message')
 // const getHandler = async (ctx) => {
 //       ctx.body = 'Hello Get'
 // }
@@ -12,12 +12,13 @@ const postHandler = async ctx => {
   if (msg.text.match("^add=")) {    
     let urlMsg = msg.text.split("=", 2) 
     let liffId = await liff(urlMsg[1]) 
-
     let replyToken = ctx.request.body.events[0].replyToken
     replyLiffId(replyToken, liffId)
   }else if (msg.text.match("^del=")) {
     let liffId = msg.text.split("=", 2) 
     await delLiff(liffId[1]) 
+  }else{
+    msg.message(replyToken)
   }
   ctx.status = 200
 }
@@ -54,9 +55,7 @@ async function delLiff(liffId) {
     })
   }
 
-async function replyLiffId(replyToken, liffId) {
-  console.log("==============function replyLiffId===============")
-  console.log(liffId)
+async function replyLiffId(replyToken, liffId) { 
   let headers = {
     "Content-Type": "application/json",
     Authorization:
@@ -67,7 +66,7 @@ async function replyLiffId(replyToken, liffId) {
     messages: [
       {
         type: "text",
-        uri: "https://line.me/R/app/" + liffId   
+        text: "https://line.me/R/app/" + liffId   
       }
     ]
   })

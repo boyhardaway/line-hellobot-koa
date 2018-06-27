@@ -1,5 +1,5 @@
 const request = require("request-promise")
-const msg = require('./message')
+const msgReply = require('./message')
 // const getHandler = async (ctx) => {
 //       ctx.body = 'Hello Get'
 // }
@@ -18,7 +18,7 @@ const postHandler = async ctx => {
     let liffId = msg.text.split("=", 2) 
     await delLiff(liffId[1]) 
   }else{
-    msg.replyMessage(replyToken)
+    msgReply.replyMessage(replyToken)
   }
   ctx.status = 200
 }

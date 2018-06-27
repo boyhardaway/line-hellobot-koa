@@ -18,7 +18,7 @@ const postHandler = async ctx => {
     let liffId = msg.text.split("=", 2) 
     await delLiff(liffId[1]) 
   }else{
-    let aa = msg.message(replyToken)
+    msg.replyMessage(replyToken)
   }
   ctx.status = 200
 }

@@ -11,13 +11,11 @@ const replyMessage = (replyToken) => {
   }
   
   client.replyMessage(replyToken, message)
-    .then((res) => {
-      console.log(res)
-      return res
+    .then(() => {
+      console.log('.then') 
     })
     .catch((err) => {
-      console.log(err)
-      return err
+      console.log(err) 
     })
   
 }

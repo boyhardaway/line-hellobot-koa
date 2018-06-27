@@ -6,8 +6,9 @@ const client = new line.Client({
 
 const replyMessage = (replyToken) => { 
   const message = {
-    type: 'text',
-    text: 'Hello World!'
+    type: 'uri',
+    label:"View details",
+    uri: 'https://line.me/R/app/1586994800-WboBOnRK'
   }
   
   client.replyMessage(replyToken, message)
@@ -16,8 +17,7 @@ const replyMessage = (replyToken) => {
     })
     .catch((err) => {
       console.log(err) 
-    })
-  
+    })  
 }
 
 module.exports = {

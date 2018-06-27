@@ -15,9 +15,8 @@
             data => {
                 // Now you can call LIFF API
                 const userId = data.context.userId
-                liff.getProfile().then(profile => {
-                        const name = profile.displayName
-                        $('#step').text('Hello ' + name)
+                liff.getProfile().then(profile => { 
+                        $('#step').text('Hello ' +  profile.userId + ', ' + profile.displayName)
                     })
                     .catch((err) => {
                         console.log('error', err)

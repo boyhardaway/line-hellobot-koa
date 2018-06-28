@@ -13,7 +13,7 @@ const postHandler = async ctx => {
     let urlMsg = msg.text.split("=", 2) 
     let liffId = await liff(urlMsg[1]) 
     
-    replyLiffId(replyToken, liffId)
+    message.replyLiffId(replyToken, liffId)
   }else if (msg.text.match("^del=")) {
     let liffId = msg.text.split("=", 2) 
     await delLiff(liffId[1]) 
@@ -55,33 +55,6 @@ async function delLiff(liffId) {
     })
   }
 
-async function replyLiffId(replyToken, liffId) { 
-  let headers = {
-    "Content-Type": "application/json",
-    Authorization:
-      "Bearer {M9MipC2I8aSvbYB65LR56z5IScjq4U+ZU4uigiwhEx7D9zImwJw7doAlRmcMj6F7jFITY6cZdrHru1NKGkbaFEMfDQRwzwbw9/YFyO+JW1BuZ4hDoAbL12H3cdv5Y3/BmnClCZrzYKsEXgv3dcLifQdB04t89/1O/w1cDnyilFU=}"
-  }
-  let body = JSON.stringify({
-    replyToken: replyToken,
-    messages: [
-      {
-        type: "text",
-        text: "https://line.me/R/app/" + liffId   
-      }
-    ]
-  })
-
-  request.post(
-    {
-      url: "https://api.line.me/v2/bot/message/reply",
-      headers: headers,
-      body: body
-    },
-    (err, ctx) => {
-      // console.log('status = ' + ctx.status)
-    }
-  )
-}
 
 module.exports = {
   postHandler

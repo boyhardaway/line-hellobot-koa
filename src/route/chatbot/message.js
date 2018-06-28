@@ -36,7 +36,12 @@ const replyMessage = (replyToken) => {
         uri: 'https://line.me/R/app/1586994800-WboBOnRK',
       },
     ],
+  }).then(() => {
+    console.log('.then') 
   })
+  .catch((err) => {
+    console.log(err) 
+  }) 
   //https://line.me/R/app/1586994800-WboBOnRK
   // client.replyMessage(replyToken, message)
   //   .then(() => {

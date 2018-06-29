@@ -17,7 +17,7 @@ const postHandler = async ctx => {
   }else if (msg.text.match("^del=")) {
     let liffId = msg.text.split("=", 2) 
     await delLiff(liffId[1]) 
-  }else if (msg.text.match("worldcup")) {
+  }else if (msg.text === "worldcup") {
     message.replyFlexMessage(replyToken)
   }else{
     message.replyMessage(replyToken)

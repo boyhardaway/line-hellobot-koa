@@ -162,7 +162,7 @@ const replyFlexMessage = (replyToken) => {
   }
   client.replyMessage(replyToken, message)
   .then(() => {
-    console.log('.then')
+    console.log('.then FlexMessage')
   })
   .catch((err) => {
     console.log(err)

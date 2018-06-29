@@ -1,168 +1,153 @@
-<h2>Calling the LIFF Product</h2>
-<p id="step"></p>
+<p id="step">
+</p>
 
-<!-- <%console.log(products[0])%> --> 
-    
-      <div class="field">
-        <label class="label">Name</label>
+<!-- <%console.log(products[0])%> -->
+<div class="column is-three-quarters-mobile">
+        <div class="column">
+    <div class="field">
+        <label class="label">Product</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Text input">
+            <div class="select is-rounded">
+                <select id="selProduct">
+                    <option>Select dropdown</option>
+                    <%products.forEach(product => {%>
+                        <option value=<%- product.code %>>
+                            <%- product.name %>
+                        </option>
+                        <%})%>
+                </select>
+            </div>
         </div>
-      </div>
-      
-      <div class="field">
-        <label class="label">Username</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-          <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
-          </span>
-          <span class="icon is-small is-right">
-            <i class="fas fa-check"></i>
-          </span>
-        </div>
-        <p class="help is-success">This username is available</p>
-      </div>
-      
-      <div class="field">
-        <label class="label">Email</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <span class="icon is-small is-right">
-            <i class="fas fa-exclamation-triangle"></i>
-          </span>
-        </div>
-        <p class="help is-danger">This email is invalid</p>
-      </div>
-      
-      <div class="field">
+    </div>
+    <div class="field">
+        <label class="label">Farm-Zone-Pond_Crop</label>
         <div class="control">
-          <div class="select is-info">
-            <select id="selProduct" > 
-                <%products.forEach(product => {%>
-                    <option value=<%- product.code %>>
-                        <%- product.name %>
-                    </option>
-                <%})%>
-            </select>
-          </div>
+            <div class="select is-rounded">
+                <select id="selProduct">
+                    <option>Select dropdown</option>
+                    <%farmorgs.forEach(farmorg => {%>
+                        <option value=<%- farmorg.code %>>
+                            <%- farmorg.name %>
+                        </option>
+                        <%})%>
+                </select>
+            </div>
         </div>
-      </div>
-      
-      <div class="field">
-        <label class="label">Message</label>
+    </div>
+    <div class="field">
+        <label class="label">Qty</label>
         <div class="control">
-          <textarea class="textarea" placeholder="Textarea"></textarea>
+            <input class="input" type="number" placeholder="Qty">
         </div>
-      </div>
-      
-      <div class="field">
+    </div>
+    <div class="field">
+        <label class="label">Wgh</label>
         <div class="control">
-          <label class="checkbox">
-            <input type="checkbox">
-            I agree to the <a href="#">terms and conditions</a>
-          </label>
+            <input class="input" type="number" placeholder="Wgh">
         </div>
-      </div>
-      
-      <div class="field">
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="question">
-            Yes
-          </label>
-          <label class="radio">
-            <input type="radio" name="question">
-            No
-          </label>
-        </div>
-      </div>
-      
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-link" id="btnSave">Save</button>
-        </div>
-        <div class="control">
-          <button class="button is-text">Cancel</button>
-        </div>
-      </div>
+    </div>
 
-    <script>
-        liff.init(
-            data => {
-                // Now you can call LIFF API
-                const userId = data.context.userId
-                liff.getProfile().then(profile => {
-                        $('#step').text('Hello ' + profile.displayName) //profile.userId
-                    })
-                    .catch((err) => {
-                        console.log('error', err)
-                    })
-                /*liff.openWindow({
-                    url:'https://google.com',
-                    external:true
-                })*/
-            },
-            err => {
-                // LIFF initialization failed
-            }
-        )
-
-        $(function () {
-            $('#btnSave').click(function() {
-                liff.sendMessages([{
-                        type: 'text',
-                        text: 'productCode : ' + $('#selProduct').val()
-                    },
-                    {
-                        type: 'text',
-                        text: 'From : ' + $('#step').text()
-                    }
-                ]).then(() => {
-                    liff.closeWindow()
-                }).catch((err) => {
+    <div class="field is-grouped">
+        <div class="control">
+            <button class="button is-link" id="btnSave" onclick="funcLiff()">Save</button>
+        </div>
+        <div class="control">
+            <button class="button is-text">Cancel</button>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    liff.init(
+        data => {
+            // Now you can call LIFF API
+            const userId = data.context.userId
+            liff.getProfile().then(profile => {
+                    $('#step').text('Hello ' + profile.displayName) //profile.userId
+                })
+                .catch((err) => {
                     console.log('error', err)
                 })
-            })
+            /*liff.openWindow({
+                url:'https://google.com',
+                external:true
+            })*/
+        },
+        err => {
+            // LIFF initialization failed
+        }
+    )
+
+    // $(function () {
+    //     $('#btnSave').click(function () {
+    //         console.log('aaaa')
+    //         liff.sendMessages([{
+    //                 type: 'text',
+    //                 text: 'productCode : ' + $('#selProduct').val()
+    //             },
+    //             {
+    //                 type: 'text',
+    //                 text: 'From : ' + $('#step').text()
+    //             }
+    //         ]).then(() => {
+    //             liff.closeWindow()
+    //         }).catch((err) => {
+    //             console.log('error', err)
+    //         })
+    //     })
+    // })
+
+    function funcLiff() {
+        console.log('cccc')
+        liff.sendMessages([{
+                type: 'text',
+                text: 'productCode : ' + $('#selProduct').val()
+            },
+            {
+                type: 'text',
+                text: 'From : ' + $('#step').text()
+            }
+        ]).then(() => {
+            liff.closeWindow()
+        }).catch((err) => {
+            console.log('error', err)
         })
+    }
 
 
 
-        // console.log('liff')
-        //     console.log(document.getElementById("selProduct").value)
-        //     document.getElementById("step").innerHTML = "func liff"
-        //     liff.init(
-        //         data => {
-        //             // Now you can call LIFF API
-        //             document.getElementById("step").innerHTML = "liff.init"
-        //             const userId = data.context.userId
+    // console.log('liff')
+    //     console.log(document.getElementById("selProduct").value)
+    //     document.getElementById("step").innerHTML = "func liff"
+    //     liff.init(
+    //         data => {
+    //             // Now you can call LIFF API
+    //             document.getElementById("step").innerHTML = "liff.init"
+    //             const userId = data.context.userId
 
-        //             liff.getProfile().then((profile) => {
-        //                 document.getElementById("step").innerHTML = "liff.getProfile"
-        //                 liff.sendMessages([{
-        //                         type: 'text',
-        //                         text: 'productName : ' + 'Product Test'
-        //                     },
-        //                     {
-        //                         type: 'text',
-        //                         text: 'From : ' + profile.displayName
-        //                     }
-        //                 ]).then(() => {
-        //                     console.log('message sent')
-        //                     document.getElementById("step").innerHTML = "liff.closeWindow"
-        //                     liff.closeWindow()
-        //                 }).catch((err) => {
-        //                     console.log('error', err)
-        //                 })
-        //             }).catch((err) => {
-        //                 console.log('error', err)
-        //             })
-        //         },
-        //         err => {
-        //             // LIFF initialization failed
-        //         }
-        //     )
-    </script>
+    //             liff.getProfile().then((profile) => {
+    //                 document.getElementById("step").innerHTML = "liff.getProfile"
+    //                 liff.sendMessages([{
+    //                         type: 'text',
+    //                         text: 'productName : ' + 'Product Test'
+    //                     },
+    //                     {
+    //                         type: 'text',
+    //                         text: 'From : ' + profile.displayName
+    //                     }
+    //                 ]).then(() => {
+    //                     console.log('message sent')
+    //                     document.getElementById("step").innerHTML = "liff.closeWindow"
+    //                     liff.closeWindow()
+    //                 }).catch((err) => {
+    //                     console.log('error', err)
+    //                 })
+    //             }).catch((err) => {
+    //                 console.log('error', err)
+    //             })
+    //         },
+    //         err => {
+    //             // LIFF initialization failed
+    //         }
+    //     )
+</script>

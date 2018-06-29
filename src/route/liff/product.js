@@ -1,11 +1,18 @@
 const getHandler = async ctx => {
     let obj = {}
     obj.products = [
-        {code: '0000000201458777',name: 'ProductName A'},
-        {code: '0000000201458121',name: 'ProductName B'},
-        {code: '0000000201365591',name: 'ProductName C'},
-        {code: '0000000201322541',name: 'ProductName E'}        
+        {code: '0000000201458777',name: '0000000201458777 - ProductName A'},
+        {code: '0000000201458121',name: '0000000201458121 - ProductName B'},
+        {code: '0000000201365591',name: '0000000201365591 - ProductName C'},
+        {code: '0000000201322541',name: '0000000201322541 - ProductName E'}        
     ] 
+
+    obj.farmorgs = [
+      {code: '781701-A101-0020-0001',name: '781701-A101-0020-0001'},
+      {code: '781701-A101-0021-0001',name: '781701-A101-0021-0001'},
+      {code: '781701-A101-0022-0001',name: '781701-A101-0022-0001'},
+      {code: '781701-A101-0023-0001',name: '781701-A101-0023-0001'}        
+  ] 
     await ctx.render('product', obj)
   }
 

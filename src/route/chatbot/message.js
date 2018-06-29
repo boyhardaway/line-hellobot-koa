@@ -47,7 +47,7 @@ const replyFlexMessage = (replyToken) => {
   }
   client.replyMessage(replyToken, JSON.parse(message))
   .then(() => {
-    console.log('.then FlexMessage')
+    console.log('then FlexMessage')
   })
   .catch((err) => {
     console.log(err)

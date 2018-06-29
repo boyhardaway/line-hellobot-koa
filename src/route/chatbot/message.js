@@ -137,13 +137,31 @@ const replyFlexMessage = (replyToken) => {
       ]
     }
   }
-  client.replyMessage(replyToken, JSON.parse(message))
-  .then(() => {
-    console.log('then FlexMessage')
+  // client.replyMessage(replyToken, JSON.parse(message))
+  // .then(() => {
+  //   console.log('then FlexMessage')
+  // })
+  // .catch((err) => {
+  //   console.log(err)
+  // }) 
+
+  let headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer {M9MipC2I8aSvbYB65LR56z5IScjq4U+ZU4uigiwhEx7D9zImwJw7doAlRmcMj6F7jFITY6cZdrHru1NKGkbaFEMfDQRwzwbw9/YFyO+JW1BuZ4hDoAbL12H3cdv5Y3/BmnClCZrzYKsEXgv3dcLifQdB04t89/1O/w1cDnyilFU=}'
+  }
+  let body = JSON.stringify({
+    replyToken: replyToken,
+    messages: [message]
   })
-  .catch((err) => {
-    console.log(err)
-  }) 
+  request.post({
+    url: 'https://api.line.me/v2/bot/message/reply',
+    headers: headers,
+    body: body
+  },
+  (err, ctx) => {
+    // console.log('status = ' + ctx.status)
+  }
+)
 }
 
 const replyLiffId = async (replyToken, liffId) => {

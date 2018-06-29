@@ -24,138 +24,115 @@ const replyMessage = (replyToken) => {
 }
 
 const replyFlexMessage = (replyToken) => {
-  const message =   {
-    type: "bubble",
-    header: {
-      type: "box",
-      layout: "vertical",
-      contents: [
-        {
-          type: "text",
-          text: "FIFA World Cup 2018",
-          size: "xl",
-          weight: "bold"
-        }
-      ]
+  const message = {
+    "type": "bubble",
+    "hero": {
+      "type": "image",
+      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+      "size": "full",
+      "aspectRatio": "20:13",
+      "aspectMode": "cover",
+      "action": {
+        "type": "uri",
+        "uri": "https://linecorp.com"
+      }
     },
-    hero: {
-      type: "image",
-      url: "https://sitthi.me:3807/static/fifa.jpg",
-      size: "full",
-      aspectRatio: "20:13",
-      aspectMode: "cover"
-    },
-    body: {
-      type: "box",
-      layout: "vertical",
-      spacing: "md",
-      contents: [
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "md",
+      "action": {
+        "type": "uri",
+        "uri": "https://linecorp.com"
+      },
+      "contents": [
         {
-          type: "box",
-          layout: "horizontal",
-          spacing: "sm",
-          contents: [
+          "type": "text",
+          "text": "Brown's Burger",
+          "size": "xl",
+          "weight": "bold"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "spacing": "sm",
+          "contents": [
             {
-              type: "text",
-              text: "LIVE !",
-              size: "lg",
-              color: "#555555",
-              weight: "bold",
-              align: "center"
-            }
-          ]
-        },
-        {
-          type: "button",
-          style: "primary",
-          action: {
-            type: "postback",
-            label: "Portugal  1 : 0  Morocco",
-            displayText: "Live Report !!",
-            data: "LIVE"
-          }
-        },
-        {
-          type: "separator",
-          margin: "lg"
-        },
-        {
-          type: "box",
-          layout: "vertical",
-          margin: "lg",
-          spacing: "sm",
-          contents: [
-            {
-              type: "box",
-              layout: "horizontal",
-              spacing: "sm",
-              contents: [
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
                 {
-                  type: "button",
-                  style: "primary",
-                  action: {
-                    type: "postback",
-                    label: "Last Match",
-                    displayText: "Last Match",
-                    data: "LAST"
-                  }
+                  "type": "icon",
+                  "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"
                 },
                 {
-                  type: "button",
-                  style: "primary",
-                  action: {
-                    type: "postback",
-                    label: "Next Match",
-                    displayText: "Next Match",
-                    data: "NEXT"
-                  }
+                  "type": "text",
+                  "text": "$10.5",
+                  "weight": "bold",
+                  "margin": "sm",
+                  "flex": 0
+                },
+                {
+                  "type": "text",
+                  "text": "400kcl",
+                  "size": "sm",
+                  "align": "end",
+                  "color": "#aaaaaa"
                 }
               ]
             },
             {
-              type: "box",
-              layout: "horizontal",
-              spacing: "sm",
-              contents: [
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
                 {
-                  type: "button",
-                  style: "primary",
-                  action: {
-                    type: "postback",
-                    label: "Schedule",
-                    displayText: "Schedule",
-                    data: "SCHEDULE"
-                  }
+                  "type": "icon",
+                  "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"
                 },
                 {
-                  type: "button",
-                  style: "primary",
-                  action: {
-                    type: "postback",
-                    label: "Table",
-                    displayText: "Table",
-                    data: "TABLE"
-                  }
+                  "type": "text",
+                  "text": "$15.5",
+                  "weight": "bold",
+                  "margin": "sm",
+                  "flex": 0
+                },
+                {
+                  "type": "text",
+                  "text": "550kcl",
+                  "size": "sm",
+                  "align": "end",
+                  "color": "#aaaaaa"
                 }
               ]
             }
           ]
+        },
+        {
+          "type": "text",
+          "text": "Sauce, Onions, Pickles, Lettuce & Cheese",
+          "wrap": true,
+          "color": "#aaaaaa",
+          "size": "xxs"
         }
       ]
     },
-    footer: {
-      type: "box",
-      layout: "vertical",
-      contents: [
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
         {
-          type: "button",
-          margin: "sm",
-          action: {
-            type: "uri",
-            label: "View Source",
-            uri: "https://sitthi.me:3807/downloaded/ba5f784d837540dfb40df2d531d7519c.json"
-          },
-          style: "secondary"
+          "type": "spacer",
+          "size": "xxl"
+        },
+        {
+          "type": "button",
+          "style": "primary",
+          "color": "#905c44",
+          "action": {
+            "type": "uri",
+            "label": "Add to Cart",
+            "uri": "https://linecorp.com"
+          }
         }
       ]
     }

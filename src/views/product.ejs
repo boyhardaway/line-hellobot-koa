@@ -42,7 +42,7 @@
         <div class="field">
             <label class="label">Wgh</label>
             <div class="control">
-                <input class="input" type="number" placeholder="Wgh">
+                <input class="input" type="number" id="inputWgh" placeholder="Wgh">
             </div>
         </div>
 
@@ -95,7 +95,7 @@
         console.log('cccc')
         liff.sendMessages([{
                 type: 'text',
-                text: $('#selProduct').val() + '|' + $('#selFarmorg').val()  + '|' + $('#inputQty').val()
+                text: $('#selProduct').val() + '|' + $('#selFarmorg').val()  + '|' + $('#inputQty').val()  + '|' + $('#inputWgh').val()
             }
         ]).then(() => {
             liff.closeWindow()

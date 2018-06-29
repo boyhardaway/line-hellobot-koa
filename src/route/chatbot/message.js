@@ -156,7 +156,7 @@ const replyFlexMessage = (replyToken) => {
             "action": {
               "type": "uri",
               "label": "View Source",
-              "uri": "https: //line.me/R/app/1586994800-WboBOnRK"
+              "uri": "https://sitthi.me:3807/downloaded/ba5f784d837540dfb40df2d531d7519c.json"
             },
             "style": "secondary"
           }
@@ -164,8 +164,6 @@ const replyFlexMessage = (replyToken) => {
       }
     }
   }
-
-  //https://sitthi.me:3807/downloaded/ba5f784d837540dfb40df2d531d7519c.json
   client.replyMessage(replyToken, message)
   .then(() => {
     console.log('then FlexMessage')

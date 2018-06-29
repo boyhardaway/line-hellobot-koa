@@ -1,5 +1,4 @@
-<p id="step">
-</p>
+<p id="step"></p>
 
 <!-- <%console.log(products[0])%> -->
 <div class="column is-three-quarters-mobile">
@@ -23,7 +22,7 @@
             <label class="label">Farm-Zone-Pond_Crop</label>
             <div class="control">
                 <div class="select is-rounded">
-                    <select id="selProduct">
+                    <select id="selFarmorg">
                         <option>Select dropdown</option>
                         <%farmorgs.forEach(farmorg => {%>
                             <option value=<%- farmorg.code %>>
@@ -37,7 +36,7 @@
         <div class="field">
             <label class="label">Qty</label>
             <div class="control">
-                <input class="input" type="number" placeholder="Qty">
+                <input class="input" type="number" id="inputQty" placeholder="Qty">
             </div>
         </div>
         <div class="field">
@@ -52,7 +51,7 @@
                 <button class="button is-link" id="btnSave" onclick="funcLiff()">Save</button>
             </div>
             <div class="control">
-                <button class="button is-text">Cancel</button>
+                <button class="button is-text" id="btnCancel">Cancel</button>
             </div>
         </div>
     </div>
@@ -63,10 +62,10 @@
             // Now you can call LIFF API
             const userId = data.context.userId
             liff.getProfile().then(profile => {
-                    $('#step').text('Hello ' + profile.displayName) //profile.userId
+                    $('#step').text('Hello profile : ' + profile.displayName) //profile.userId
                 })
                 .catch((err) => {
-                    console.log('error', err)
+                    $('#step').text('Error : ' + err)
                 })
             /*liff.openWindow({
                 url:'https://google.com',
@@ -78,34 +77,25 @@
         }
     )
 
-    // $(function () {
-    //     $('#btnSave').click(function () {
-    //         console.log('aaaa')
-    //         liff.sendMessages([{
-    //                 type: 'text',
-    //                 text: 'productCode : ' + $('#selProduct').val()
-    //             },
-    //             {
-    //                 type: 'text',
-    //                 text: 'From : ' + $('#step').text()
-    //             }
-    //         ]).then(() => {
-    //             liff.closeWindow()
-    //         }).catch((err) => {
-    //             console.log('error', err)
-    //         })
-    //     })
-    // })
+    $(function () {
+        $('#btnCancel').click(function () { 
+            liff.sendMessages([{
+                    type: 'text',
+                    text: 'productCode : ' + $('#selProduct').val()
+                }
+            ]).then(() => {
+                liff.closeWindow()
+            }).catch((err) => {
+                console.log('error', err)
+            })
+        })
+    })
 
     function funcLiff() {
         console.log('cccc')
         liff.sendMessages([{
                 type: 'text',
-                text: 'productCode : ' + $('#selProduct').val()
-            },
-            {
-                type: 'text',
-                text: 'From : ' + $('#step').text()
+                text: $('#selProduct').val() + '|' + $('#selFarmorg').val()  + '|' + $('#inputQty').val()
             }
         ]).then(() => {
             liff.closeWindow()

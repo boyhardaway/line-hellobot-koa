@@ -137,7 +137,7 @@ const replyFlexMessage = (replyToken) => {
       ]
     }
   }
-  client.replyMessage(replyToken, message)
+  client.replyMessage(replyToken, JSON.parse(message))
   .then(() => {
     console.log('then FlexMessage')
   })

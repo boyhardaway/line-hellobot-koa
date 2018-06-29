@@ -25,27 +25,27 @@ const replyMessage = (replyToken) => {
 
 const replyFlexMessage = (replyToken) => {
   const message = {  
-    "type": "flex",
-    "altText": "this is a flex message",
-    "contents": {
-      "type": "bubble",
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
+    type: 'flex',
+    altText: 'this is a flex message',
+    contents: {
+      type: 'bubble',
+      body: {
+        type: 'box',
+        layout: 'vertical',
+        contents: [
           {
-            "type": "text",
-            "text": "hello"
+            type: 'text',
+            'text': 'hello'
           },
           {
-            "type": "text",
-            "text": "world"
+            type: 'text',
+            text: 'world'
           }
         ]
       }
     }
   }
-  client.replyMessage(replyToken, JSON.parse(message))
+  client.replyMessage(replyToken, message)
   .then(() => {
     console.log('then FlexMessage')
   })
@@ -56,19 +56,19 @@ const replyFlexMessage = (replyToken) => {
 
 const replyLiffId = async (replyToken, liffId) => {
   let headers = {
-    "Content-Type": "application/json",
-    Authorization: "Bearer {M9MipC2I8aSvbYB65LR56z5IScjq4U+ZU4uigiwhEx7D9zImwJw7doAlRmcMj6F7jFITY6cZdrHru1NKGkbaFEMfDQRwzwbw9/YFyO+JW1BuZ4hDoAbL12H3cdv5Y3/BmnClCZrzYKsEXgv3dcLifQdB04t89/1O/w1cDnyilFU=}"
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer {M9MipC2I8aSvbYB65LR56z5IScjq4U+ZU4uigiwhEx7D9zImwJw7doAlRmcMj6F7jFITY6cZdrHru1NKGkbaFEMfDQRwzwbw9/YFyO+JW1BuZ4hDoAbL12H3cdv5Y3/BmnClCZrzYKsEXgv3dcLifQdB04t89/1O/w1cDnyilFU=}'
   }
   let body = JSON.stringify({
     replyToken: replyToken,
     messages: [{
-      type: "text",
-      text: "https://line.me/R/app/" + liffId
+      type: 'text',
+      text: 'https://line.me/R/app/' + liffId
     }]
   })
 
   request.post({
-      url: "https://api.line.me/v2/bot/message/reply",
+      url: 'https://api.line.me/v2/bot/message/reply',
       headers: headers,
       body: body
     },

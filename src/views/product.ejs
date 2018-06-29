@@ -112,7 +112,7 @@
         )
 
         $(function () {
-            $('#btnSave').on('click', function () {
+            $('#btnSave').click(function() {
                 liff.sendMessages([{
                         type: 'text',
                         text: 'productCode : ' + $('#selProduct').val()

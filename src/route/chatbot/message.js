@@ -164,6 +164,8 @@ const replyFlexMessage = (replyToken) => {
       }
     }
   }
+
+  //
   client.replyMessage(replyToken, message)
   .then(() => {
     console.log('then FlexMessage')

@@ -19,9 +19,10 @@ const postHandler = async ctx => {
     await delLiff(liffId[1]) 
   }else if (msg.text === "worldcup") {
     message.replyFlexMessage(replyToken)
-  }else{
-    message.replyMessage(replyToken)
   }
+  // else{
+  //   message.replyMessage(replyToken)
+  // }
   ctx.status = 200
 }
 

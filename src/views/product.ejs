@@ -1,9 +1,11 @@
-<p id="step"></p>
-
 <!-- <%console.log(products[0])%> -->
 <div class="column is-three-quarters-mobile">
     <div class="column">
         <div class="field">
+            <div class="field-label">
+                <label class="label" id="labelName">No padding</label>
+            </div>
+
             <label class="label">Product</label>
             <div class="control">
                 <div class="select is-rounded">
@@ -62,10 +64,10 @@
             // Now you can call LIFF API
             const userId = data.context.userId
             liff.getProfile().then(profile => {
-                    $('#step').text('Hello profile : ' + profile.displayName) //profile.userId
+                    $('#labelName').text('Hello profile : ' + profile.displayName) //profile.userId
                 })
                 .catch((err) => {
-                    $('#step').text('Error : ' + err)
+                    $('#labelName').text('Error : ' + err)
                 })
             /*liff.openWindow({
                 url:'https://google.com',
@@ -78,12 +80,11 @@
     )
 
     $(function () {
-        $('#btnCancel').click(function () { 
+        $('#btnCancel').click(function () {
             liff.sendMessages([{
-                    type: 'text',
-                    text: 'productCode : ' + $('#selProduct').val()
-                }
-            ]).then(() => {
+                type: 'text',
+                text: 'productCode : ' + $('#selProduct').val()
+            }]).then(() => {
                 liff.closeWindow()
             }).catch((err) => {
                 console.log('error', err)
@@ -92,12 +93,11 @@
     })
 
     function funcLiff() {
-        console.log('cccc')
         liff.sendMessages([{
-                type: 'text',
-                text: $('#selProduct').val() + '|' + $('#selFarmorg').val()  + '|' + $('#inputQty').val()  + '|' + $('#inputWgh').val()
-            }
-        ]).then(() => {
+            type: 'text',
+            text: $('#selProduct').val() + '|' + $('#selFarmorg').val() + '|' + $('#inputQty').val() + '|' +
+                $('#inputWgh').val()
+        }]).then(() => {
             liff.closeWindow()
         }).catch((err) => {
             console.log('error', err)

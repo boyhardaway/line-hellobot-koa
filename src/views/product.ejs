@@ -83,7 +83,7 @@
         $('#btnSave').click(function () {
             liff.sendMessages([{
                 type: 'text',
-                text: 'productCode : ' + $('#selProduct').val()
+                text: $('#selProduct').val() + '|' + $('#selFarmorg').val() + '|' + $('#inputQty').val() + '|' + $('#inputWgh').val()
             }]).then(() => {
                 liff.closeWindow()
             }).catch((err) => {

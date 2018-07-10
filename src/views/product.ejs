@@ -64,7 +64,7 @@
             // Now you can call LIFF API
             const userId = data.context.userId
             liff.getProfile().then(profile => {
-                    $('#labelName').text('Hello profile : ' + profile.displayName + '(' + profile.displayName + ')') //profile.userId
+                    $('#labelName').text('Hello profile : ' + profile.displayName + '(' + profile.userId + ')') //profile.userId
                 })
                 .catch((err) => {
                     $('#labelName').text('Error : ' + err)

@@ -1,10 +1,10 @@
 const Router = require('koa-router')
 
-const productapi = require('./productapi') 
-
+const product = require('./product') 
+const healthcheck = require('./healthcheck') 
 const router = new Router()
 
-router.get('/productapi', productapi.getHandler) 
-
+router.get('/product', product.getHandler) 
+router.get('/healthcheck', healthcheck.getHandler) 
 
 module.exports = router.routes()

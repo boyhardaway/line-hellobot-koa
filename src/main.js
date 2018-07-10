@@ -12,12 +12,15 @@ render(app, {
   viewExt: 'ejs',
   cache: false
 })
-
-app 
+ 
+app  
 .use(koaBody({ multipart: true}))
 .use(require('./route'))
 .use(serve('public')) 
-.listen(process.env.PORT || 8000)
+.listen(process.env.PORT || 8000, () => {
+  const job = require('../src/services/job')
+  job.runJob
+})
 
 
 // .use(router.allowedMethods({

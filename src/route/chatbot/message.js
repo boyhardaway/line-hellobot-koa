@@ -3,10 +3,24 @@ const client = new line.Client({
   channelAccessToken: '{M9MipC2I8aSvbYB65LR56z5IScjq4U+ZU4uigiwhEx7D9zImwJw7doAlRmcMj6F7jFITY6cZdrHru1NKGkbaFEMfDQRwzwbw9/YFyO+JW1BuZ4hDoAbL12H3cdv5Y3/BmnClCZrzYKsEXgv3dcLifQdB04t89/1O/w1cDnyilFU=}'
 }) 
 
+const pushMessage = (toUserId) => {
+  const message = {
+    type: 'text',
+    text: 'Test replyMessage'
+  }  
+  client.pushMessage(toUserId, message)
+  .then(() => {
+    console.log('.then')
+  })
+  .catch((err) => {
+    console.log(err)
+  }) 
+}
+
 const replyMessage = (replyToken) => {
   const message = {
     type: 'text',
-    text: 'https: //line.me/R/app/1586994800-WboBOnRK'
+    text: 'Test replyMessage'
   }  
   client.replyMessage(replyToken, message)
   .then(() => {
@@ -196,5 +210,6 @@ const replyLiffId = async (replyToken, liffId) => {
 module.exports = {
   replyMessage,
   replyLiffId,
-  replyFlexMessage
+  replyFlexMessage,
+  pushMessage
 }

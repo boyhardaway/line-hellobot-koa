@@ -5,7 +5,7 @@ const message = require('../route/chatbot/message')
 // rule.second = 20
 const runJob = schedule.scheduleJob('*/5 * * * * *', function(){
   console.log(`---------------The answer to life, the universe, and everything!!!!!!!!!!!!!!!!!!!!!!!!!!`) 
-  message.pushMessage('U82d78fbd0a435be08b2b5b22f122da30')
+  message.pushFlexMessageMessage('U82d78fbd0a435be08b2b5b22f122da30')
   runJob.cancel()
 })
 

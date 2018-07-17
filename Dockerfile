@@ -1,4 +1,4 @@
-FROM node:7
+FROM 340910543935.dkr.ecr.ap-southeast-1.amazonaws.com/node:8.11.3-alpine
 
 # Create app directory
 WORKDIR /app
@@ -15,6 +15,6 @@ RUN npm install
 # Bundle app source
 COPY . /app
 
-# CMD [ "npm", "start" ]
+EXPOSE 8000
 CMD node index.js
-EXPOSE 8081
+#CMD [ "npm", "start" ]

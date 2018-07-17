@@ -1,63 +1,37 @@
-const request = require("request-promise")
-const message = require('./message')
+const message = require('./messagingApi')
+const liff = require('../liff/funcLiff')
 // const getHandler = async (ctx) => {
 //       ctx.body = 'Hello Get'
 // }
 
 const postHandler = async ctx => {
   console.log("==============ctx.request.body===============")
-  console.log(ctx.request.body.events[0].message)
+  console.log(ctx.request.body)
+  console.log(process.env.DATABASE_URL)
   const replyToken = ctx.request.body.events[0].replyToken
   let msg = ctx.request.body.events[0].message
-  if (msg.text.match("^add=")) {    
+  if (msg.text.match("^addliff=")) {    
     let urlMsg = msg.text.split("=", 2) 
-    let liffId = await liff(urlMsg[1]) 
-    
-    message.replyLiffId(replyToken, liffId)
-  }else if (msg.text.match("^del=")) {
+    let liffId = await liff.addLiff(urlMsg[1])     
+    liff.replyLiffId(replyToken, liffId)
+  }else if (msg.text.match("^delliff=")) {
     let liffId = msg.text.split("=", 2) 
-    await delLiff(liffId[1]) 
-  }else if (msg.text === "worldcup") {
-    message.replyFlexMessage(replyToken)
-  }
-  // else{
-  //   message.replyMessage(replyToken)
-  // }
+    await liff.delLiff(liffId[1]) 
+  }else if (msg.text.match("<auction>yes")) {
+    let msg = {
+      type: 'text',
+      text: 'Thank You'
+    }  
+    message.replyMessage(replyToken, msg)
+  }else{
+    let msg = {
+      type: 'text',
+      text: 'This is a bot'
+    }  
+     message.replyMessage(replyToken, msg)
+   }
   ctx.status = 200
-}
-
-async function liff(urlMsg) {
-  let headers = {
-    "Content-Type": "application/json",
-    Authorization:
-      "Bearer {M9MipC2I8aSvbYB65LR56z5IScjq4U+ZU4uigiwhEx7D9zImwJw7doAlRmcMj6F7jFITY6cZdrHru1NKGkbaFEMfDQRwzwbw9/YFyO+JW1BuZ4hDoAbL12H3cdv5Y3/BmnClCZrzYKsEXgv3dcLifQdB04t89/1O/w1cDnyilFU=}"
-  }
-  let body = JSON.stringify({
-    view: {
-      type: "tall",
-      url: urlMsg
-    }
-  })
-  const response = await request.post({
-    url: "https://api.line.me/liff/v1/apps",
-    headers: headers,
-    body: body
-  })
-  let res = JSON.parse(response)
-  return res.liffId
-}
-
-async function delLiff(liffId) {
-    let headers = { 
-      Authorization:
-        "Bearer {M9MipC2I8aSvbYB65LR56z5IScjq4U+ZU4uigiwhEx7D9zImwJw7doAlRmcMj6F7jFITY6cZdrHru1NKGkbaFEMfDQRwzwbw9/YFyO+JW1BuZ4hDoAbL12H3cdv5Y3/BmnClCZrzYKsEXgv3dcLifQdB04t89/1O/w1cDnyilFU=}"
-    } 
-    request.delete({
-      url: "https://api.line.me/liff/v1/apps/" + liffId,
-      headers
-    })
-  }
-
+} 
 
 module.exports = {
   postHandler

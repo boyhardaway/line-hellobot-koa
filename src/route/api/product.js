@@ -1,4 +1,4 @@
-const getHandler = ctx => {
+const getHandler = ctx => { 
   let obj = {}
   obj.products = [
     { code: "0000000201458777", name: "Name A" },

@@ -19,9 +19,6 @@ const scheduleJobSendMessage = schedule.scheduleJob('* * 8 * * *', function(){
   
 })
 
-const callSendMessage = () => {
-  
-}
 
 module.exports = scheduleJobSendMessage
 

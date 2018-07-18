@@ -1,6 +1,5 @@
 const request = require("request-promise")
-const config = require('../../config/config')
-
+const config = require('../../config/config') 
 const addLiff = async (urlMsg) => {
     let headers = config.header
     let body = JSON.stringify({
@@ -10,7 +9,7 @@ const addLiff = async (urlMsg) => {
         }
     })
     const response = await request.post({
-        url: "https://api.line.me/liff/v1/apps",
+        url: config.urlLiff,
         headers: headers,
         body: body
     })
@@ -21,7 +20,7 @@ const addLiff = async (urlMsg) => {
 const delLiff = async (liffId) => {
     let headers = config.header
     request.delete({
-        url: "https://api.line.me/liff/v1/apps/" + liffId,
+        url: `${config.urlLiff}/${liffId}`,
         headers
     })
 }

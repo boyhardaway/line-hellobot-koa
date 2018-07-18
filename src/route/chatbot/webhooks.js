@@ -1,11 +1,17 @@
 const message = require('./messagingApi')
 const liff = require('../liff/funcLiff')
-// const getHandler = async (ctx) => {
-//       ctx.body = 'Hello Get'
-// }
+const getHandler = async (ctx) => {
+  console.log("==============Get ctx.request.body===============")
+  const replyToken = ctx.request.body.events[0].replyToken
+  let msg = {
+    type: 'text',
+    text: 'Hello Get webhooks'
+  }  
+  message.replyMessage(replyToken, msg)
+}
 
 const postHandler = async ctx => {
-  console.log("==============ctx.request.body===============")
+  console.log("==============Post ctx.request.body===============")
   console.log(ctx.request.body)
   // console.log(process.env.DATABASE_URL)
   const replyToken = ctx.request.body.events[0].replyToken
@@ -34,5 +40,6 @@ const postHandler = async ctx => {
 } 
 
 module.exports = {
-  postHandler
+  postHandler,
+  getHandler
 }

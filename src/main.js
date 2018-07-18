@@ -18,14 +18,6 @@ app
 .use(require('./route'))
 .use(serve('public')) 
 .listen(process.env.PORT || 8000, () => {
-  const job = require('../src/services/scheduleJob')
-  job.scheduleJobSendMessage
-   
+  // const job = require('../src/services/scheduleJob')
+  // job.scheduleJobSendMessage   
 })
-
-
-// .use(router.allowedMethods({
-//     throw: true,
-//     notImplemented: () => new Boom.notImplemented(),
-//     methodNotAllowed: () => new Boom.methodNotAllowed()
-//   }))

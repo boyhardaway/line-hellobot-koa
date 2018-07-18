@@ -1,5 +1,6 @@
 const message = require('./messagingApi')
 const liff = require('../liff/funcLiff')
+
 const getHandler = async (ctx) => {
   console.log("==============Get ctx.request.body===============")
   const replyToken = ctx.request.body.events[0].replyToken
@@ -10,10 +11,12 @@ const getHandler = async (ctx) => {
   message.replyMessage(replyToken, msg)
 }
 
+// console.log(process.env.DATABASE_URL)
+
 const postHandler = async ctx => {
   console.log("==============Post ctx.request.body===============")
   console.log(ctx.request.body)
-  // console.log(process.env.DATABASE_URL)
+  
   const replyToken = ctx.request.body.events[0].replyToken
   let msg = ctx.request.body.events[0].message
   if (msg.text.match("^addliff=")) {    
@@ -35,7 +38,7 @@ const postHandler = async ctx => {
       text: 'This is a bot'
     }  
      message.replyMessage(replyToken, msg)
-   }
+  }
   ctx.status = 200
 } 
 

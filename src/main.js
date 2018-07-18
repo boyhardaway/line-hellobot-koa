@@ -17,8 +17,8 @@ app
 .use(koaBody({ multipart: true}))
 .use(require('./route'))
 .use(serve('public')) 
-// .listen(process.env.PORT || 8000, () => {
-//   const job = require('../src/services/scheduleJob')
-//   job.scheduleJobSendMessage   
-// })
-.listen(process.env.PORT || 8000)
+.listen(process.env.PORT || 8000, () => {
+  const job = require('../src/services/scheduleJob')
+  job.scheduleJobSendMessage   
+})
+// .listen(process.env.PORT || 8000)

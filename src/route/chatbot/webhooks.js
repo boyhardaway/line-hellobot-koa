@@ -6,8 +6,8 @@ const liff = require('../liff/funcLiff')
 
 const postHandler = async ctx => {
   console.log("==============ctx.request.body===============")
-  console.log(ctx.request.body)
-  console.log(process.env.DATABASE_URL)
+  console.log(ctx.request.body.events[0].replyToken)
+  // console.log(process.env.DATABASE_URL)
   const replyToken = ctx.request.body.events[0].replyToken
   let msg = ctx.request.body.events[0].message
   if (msg.text.match("^addliff=")) {    

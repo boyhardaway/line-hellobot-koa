@@ -16,7 +16,7 @@ const getHandler = async (ctx) => {
 const postHandler = async ctx => {
   console.log("==============Post ctx.request.body===============")
   console.log(ctx.request.body)
-  console.log(ctx.request.body.events[0].source[0])
+  console.log(ctx.request.body.events[0].source)
   
   const replyToken = ctx.request.body.events[0].replyToken
   let msg = ctx.request.body.events[0].message

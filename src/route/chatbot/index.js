@@ -5,6 +5,8 @@ const router = new Router()
 
 // router.get('/webhooks', webhooks.getHandler)
 router.post('/webhooks', webhooks.postHandler) 
+router.post('/chatbotaqua', webhooks.postHandler) 
+//
 router.get('/SendMessageAuction', SendMessageAuction.AutoSendMsg)
 
 module.exports = router.routes()

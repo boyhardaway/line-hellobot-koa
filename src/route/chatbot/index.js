@@ -8,7 +8,7 @@ console.log("==============Index router===============")
 router.post('/webhooks', webhooks.postHandler)  
 
 //Get
-router.get('/webhooks', webhooks.getHandler)  
+// router.get('/webhooks', webhooks.getHandler)  
 router.get('/SendMessageAuction', SendMessageAuction.AutoSendMsg)
 
 module.exports = router.routes()
